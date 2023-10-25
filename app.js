@@ -1,4 +1,7 @@
 import express from "express";
+import path from "path";
+import bodyParser from "body-parser";
+import nunjucks from "nunjucks";
 
 const app = express();
 app.set("view engine", "html");
@@ -13,12 +16,24 @@ nunjucks.configure("views", {
 });
 
 app.use(express.static(path.join(__dirname, "static")));
+
 import {
   getReadingEase,
   countSentences,
   countSyllables,
   countWords,
 } from "./readability-checker.js";
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get("/submit", (req, res) => {
+  res.redirect("/");
+});
+
+app.post("/submit", (req, res) => {
+  res.send(`${getReadingEase(req.body.text)}`);
+});
+
 app.get("/", (req, res) => {
   // res.sendFile(path.join(__dirname, "index.html"));
   res.render("index.html");

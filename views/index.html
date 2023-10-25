@@ -1,2 +1,11 @@
 {% extends 'base.html' %} {% set title = 'Home' %} {% block content %}
+<div id="form-container">
+  <h2>Enter some text to be checked</h2>
+  <form action="/submit" method="post">
+    <textarea name="text" id="textArea" value="test">
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis quod maxime earum iusto repudiandae itaque, blanditiis soluta fuga aperiam debitis ut assumenda sit, officia facere sapiente tenetur commodi voluptate consequuntur.</textarea
+    >
+    <input id="submit-button" type="submit" value="Check reading score" />
+  </form>
+</div>
 {% endblock %}
