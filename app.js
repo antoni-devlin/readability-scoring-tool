@@ -13,6 +13,12 @@ nunjucks.configure("views", {
 });
 
 app.use(express.static(path.join(__dirname, "static")));
+import {
+  getReadingEase,
+  countSentences,
+  countSyllables,
+  countWords,
+} from "./readability-checker.js";
 app.get("/", (req, res) => {
   // res.sendFile(path.join(__dirname, "index.html"));
   res.render("index.html");

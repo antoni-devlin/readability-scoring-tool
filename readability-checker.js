@@ -26,3 +26,4 @@ function getReadingEase(text) {
   let syllables = countSyllables(text);
   return 206.835 - 1.015 * (words / sentences) - 84.6 * (syllables / words);
 }
+export { getReadingEase, countSentences, countSyllables, countWords };
